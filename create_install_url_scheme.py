@@ -9,8 +9,8 @@ import qrcode
 import console
 
 # Module imports
-from install_from_github import init_install_path
-from tools_github import get_secret
+from tools.install_from_github import init_install_path
+from tools.tools_github import get_secret
 
 #https://raw.githubusercontent.com/jdaniellhebert/Pythonista_Install_from_Github/main/install_from_github.py
 
