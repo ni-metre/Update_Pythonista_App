@@ -10,6 +10,7 @@ import requests
 
 with open('install_config.json') as f:
     CONFIG_DICT = json.load(f)
+CONFIG_DICT['git_auth'] = ''
 
 
 def init_install_path(install_dir_name):
