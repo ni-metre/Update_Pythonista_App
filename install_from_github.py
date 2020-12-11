@@ -8,9 +8,14 @@ import shortcuts
 import qrcode
 import requests
 
-with open('install_config.json') as f:
-    CONFIG_DICT = json.load(f)
-CONFIG_DICT['git_auth'] = ''
+CONFIG_DICT = {'install_dir_name': "from-NI-Github",
+                            'git_usr': "ni-metre",
+                            'git_repo': "Update_Pythonista_App",
+                            'git_branch': "main",
+                            'start_file': "test_run.py",
+                            'is_release': "False",
+                            'git_auth': ""
+}
 
 
 def init_install_path(install_dir_name):
