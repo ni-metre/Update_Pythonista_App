@@ -1,0 +1,8 @@
+{
+"install_dir_name" : "from-NI-Github",
+"git_usr" : "ni-metre",
+"git_repo" : "Update_Pythonista_App",
+"git_branch" : "main",
+"start_file" : "install_app.py",
+"is_release" : "False"
+}
