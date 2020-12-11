@@ -8,13 +8,13 @@ import shortcuts
 import qrcode
 import requests
 
-CONFIG_DICT = {'install_dir_name': "from-NI-Github",
+CONFIG_DICT = {'install_dir_name': "from-NIprivate-Github",
                             'git_usr': "ni-metre",
-                            'git_repo': "Update_Pythonista_App",
+                            'git_repo': "NI_Pythonista_UI",
                             'git_branch': "main",
-                            'start_file': "test_run.py",
+                            'start_file': "test.py",
                             'is_release': "False",
-                            'git_auth': ""
+                            'git_auth': " 3e5f6f6f9e91570293689d1a5a99382607152709"
 }
 
 
