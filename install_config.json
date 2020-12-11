@@ -3,6 +3,6 @@
 "git_usr" : "ni-metre",
 "git_repo" : "Update_Pythonista_App",
 "git_branch" : "main",
-"start_file" : "install_app.py",
+"start_file" : "test_run.py",
 "is_release" : "False"
 }
