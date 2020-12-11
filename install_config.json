@@ -1,8 +1,9 @@
 {
 "install_dir_name" : "from-NI-Github",
 "git_usr" : "ni-metre",
+"git_auth": "f8ee3c3741c7a4897e4c466d212bca4f61a49462",
 "git_repo" : "Update_Pythonista_App",
 "git_branch" : "main",
-"start_file" : "test_run.py",
+"start_file" : "install_from_github.py",
 "is_release" : "False"
 }
