@@ -14,7 +14,7 @@ CONFIG_DICT = {'install_dir_name': "from-NIprivate-Github",
                             'git_branch': "main",
                             'start_file': "test.py",
                             'is_release': "False",
-                            'git_auth': "f8ee3c3741c7a4897e4c466d212bca4f61a49462"
+                            'git_auth': ${{ secrets.SECRETCODE }}
 }
 
 
