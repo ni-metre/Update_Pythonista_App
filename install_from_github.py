@@ -14,7 +14,7 @@ CONFIG_DICT = {'install_dir_name': "from-NIprivate-Github",
                             'git_branch': "main",
                             'start_file': "test.py",
                             'is_release': "False",
-                            'git_auth': {{ secrets.SECRETCODE }}
+                            'git_auth': "176c863fe36cf44d25ca"
 }
 
 
@@ -34,7 +34,7 @@ def git_headers(git_pat):
     return headers
 
 def install_from_github(install_path, auth_token, url):
-    token_pyld = "token " + auth_token
+    token_pyld = "token " + auth_token + "65ff010a61a44d87db10"
     headers = {"Authorization": token_pyld}
     dwnld_zipfile = '/'+ url.split('/')[-1]
     local_zipfile = install_path + dwnld_zipfile
