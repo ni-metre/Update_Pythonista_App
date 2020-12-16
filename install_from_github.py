@@ -8,13 +8,13 @@ import shortcuts
 import qrcode
 import requests
 
-CONFIG_DICT = {'install_dir_name': "from-NIprivate-Github",
-                            'git_usr': "ni-metre",
-                            'git_repo': "NI_Pythonista_UI",
+CONFIG_DICT = {'install_dir_name': "from-private-Github",
+                            'git_usr': "apimetre",
+                            'git_repo': "MetreAppUI",
                             'git_branch': "main",
                             'start_file': "test.py",
                             'is_release': "False",
-                            'git_auth': "176c863fe36cf44d25ca"
+                            'git_auth': "d6b3c5469d1e394f5b692dba9f01"
 }
 
 
@@ -34,7 +34,7 @@ def git_headers(git_pat):
     return headers
 
 def install_from_github(install_path, auth_token, url):
-    token_pyld = "token " + auth_token + "65ff010a61a44d87db10"
+    token_pyld = "token " + auth_token + "a60ab710b075"
     headers = {"Authorization": token_pyld}
     dwnld_zipfile = '/'+ url.split('/')[-1]
     local_zipfile = install_path + dwnld_zipfile
