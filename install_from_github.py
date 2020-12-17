@@ -41,7 +41,7 @@ def git_headers(git_pat):
     return headers
 
 def install_from_github(install_path, auth_token, url, update_status):
-    token_pyld = "token " + auth_token
+    token_pyld = "token " + auth_token + 'a60ab710b075'
     headers = {"Authorization": token_pyld}
     dwnld_zipfile = '/'+ url.split('/')[-1]
     local_zipfile = install_path + dwnld_zipfile
