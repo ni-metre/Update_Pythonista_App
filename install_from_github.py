@@ -125,8 +125,11 @@ def main():
         print("\nInstalling:")
         pprint(CONFIG_DICT)
         install_path, url, installed_files, dirfromgit = install_branch(params)
-
-        start_path = install_path + '/' + dirfromgit + '/' + params.start_file
+        
+        start_path = install_path + '/' + params.start_file
+        
+        
+        #start_path = install_path + '/' + dirfromgit + '/' + params.start_file
         url_scheme = shortcuts.pythonista_url(path=start_path, action='run', args="", argv=[])
         print(f"\nURL scheme: {url_scheme}")
 
