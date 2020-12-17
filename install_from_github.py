@@ -65,17 +65,17 @@ def install_from_github(install_path, auth_token, url, update_status):
         print(os.listdir(tempsource))
         allFileList = os.listdir(tempsource)
         for file in allFileList:
-        	if update_status:
-        	  if fnmatch.fnmatch(file, 'log'):
-              print('Keeping existing settings and log data')
-            elif fnmatch.fnmatch(file, 'images'):
-              pass
-            elif fnmatch.fnmatch(file, 'tmp_resources'):
-              pass
-        	  else:
-        			shutil.move(tempsource + '/' + file, install_path + '/' + file)
-        	else:
-        		shutil.move(tempsource + '/' + file, install_path + '/' + file)
+            if update_status:
+                if fnmatch.fnmatch(file, 'log'):
+                  print('Keeping existing settings and log data')
+                elif fnmatch.fnmatch(file, 'images'):
+                    pass
+                elif fnmatch.fnmatch(file, 'tmp_resources'):
+                    pass
+                else:
+                    shutil.move(tempsource + '/' + file, install_path + '/' + file)
+            else:
+                shutil.move(tempsource + '/' + file, install_path + '/' + file)
 
         unzipped_dirname = z.namelist()[0]
         os.remove(local_zipfile)
@@ -123,7 +123,7 @@ def main():
         installed_dir = install_path + '/' + installed_files[0]
         create_url_scheme_and_qr_code(installed_dir, url_scheme, params.start_file)
     else:
-    	
+
        
         params = SimpleNamespace(**CONFIG_DICT)
         print("\nInstalling:")
