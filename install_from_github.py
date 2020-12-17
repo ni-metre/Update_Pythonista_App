@@ -131,7 +131,7 @@ def main():
         print(f"\nURL scheme: {url_scheme}")
 
         installed_dir = install_path + '/' + installed_files[0]
-        create_url_scheme_and_qr_code(installed_dir, url_scheme, #params.start_file)
+        create_url_scheme_and_qr_code(installed_dir, url_scheme, params.start_file)
 
         shortcuts.open_url(url_scheme)
        
