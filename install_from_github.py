@@ -66,13 +66,13 @@ def install_from_github(install_path, auth_token, url, update_status):
         allFileList = os.listdir(tempsource)
         for file in allFileList:
         	if update_status:
-        		if fnmatch.fnmatch(file, 'log'):
+        	  if fnmatch.fnmatch(file, 'log'):
         			print('Keeping existing settings and log data')
             elif fnmatch.fnmatch(file, 'images'):
               pass
             elif fnmatch.fnmatch(file, 'tmp_resources'):
               pass
-        		else:
+        	  else:
         			shutil.move(tempsource + '/' + file, install_path + '/' + file)
         	else:
         		shutil.move(tempsource + '/' + file, install_path + '/' + file)
