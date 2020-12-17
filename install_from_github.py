@@ -126,14 +126,14 @@ def main():
         pprint(CONFIG_DICT)
         install_path, url, installed_files, dirfromgit = install_branch(params)
 
-        #start_path = install_path + '/' + dirfromgit + '/' + params.start_file
-        #url_scheme = shortcuts.pythonista_url(path=start_path, action='run', args="", argv=[])
-        #print(f"\nURL scheme: {url_scheme}")
+        start_path = install_path + '/' + dirfromgit + '/' + params.start_file
+        url_scheme = shortcuts.pythonista_url(path=start_path, action='run', args="", argv=[])
+        print(f"\nURL scheme: {url_scheme}")
 
-        #installed_dir = install_path + '/' + installed_files[0]
-        #create_url_scheme_and_qr_code(installed_dir, url_scheme, params.start_file)
+        installed_dir = install_path + '/' + installed_files[0]
+        create_url_scheme_and_qr_code(installed_dir, url_scheme, params.start_file)
 
-        #shortcuts.open_url(url_scheme)
+        shortcuts.open_url(url_scheme)
        
 
 if __name__ == '__main__':
