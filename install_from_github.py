@@ -70,7 +70,7 @@ def install_from_github(install_path, auth_token, url, update_status):
                   print('Keeping existing settings and log data')
                 elif fnmatch.fnmatch(file, 'images'):
                     pass
-                elif fnmatch.fnmatch(file, 'tmp_resources'):
+                elif fnmatch.fnmatch(file, 'temp_resources'):
                     pass
                 else:
                     shutil.move(tempsource + '/' + file, install_path + '/' + file)
