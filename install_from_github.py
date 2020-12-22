@@ -12,7 +12,7 @@ CONFIG_DICT = {'install_dir_name': "MetreiOS",
                             'git_usr': "apimetre",
                             'git_repo': "MetreAppUI",
                             'git_branch': "main",
-                            'start_file': "MetreUI.py",
+                            'start_file': "shortcut.py",
                             'is_release': "False",
                             'git_auth': "d6b3c5469d1e394f5b692dba9f01"
 }
