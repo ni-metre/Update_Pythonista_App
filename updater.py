@@ -24,15 +24,17 @@ def init_install_path(install_dir_name):
     root_dir = os.path.abspath(os.path.expanduser('~/Documents/' + install_dir_name))
     if os.path.exists(root_dir):
         with open(root_dir + '/metre_ios_install_config.json', 'w') as outfile:
-        		json.dump(CONFIG_DICT, outfile)
-        	config_dict = CONFIG_DICT
+                json.dump(CONFIG_DICT, outfile)
+            config_dict = CONFIG_DICT
+            update = True
         print('app directory exists')
     else:
         print('making app directory')
         os.makedirs(root_dir, exist_ok=True)
         with open(root_dir + 'metre_ios_install_config.json', 'w') as outfile:
-        	json.dump(CONFIG_DICT, outfile)
+            json.dump(CONFIG_DICT, outfile)
         config_dict = CONFIG_DICT
+        update = False
         
     return root_dir, config_dict
 
@@ -120,21 +122,25 @@ def create_url_scheme_and_qr_code(installed_dir, url_scheme, start_file):
     print(f"\nQR Code saved as: {qrcode_file}")
 
 def main():
-    install_path, config_dict =init_install_path(CONFIG_DICT['install_root_name'])
-    current_install_path = os.path.abspath(os.path.expanduser('~/Documents/' + CONFIG_DICT['install_root_name'] + '/' + config_dict['git_repo']))
-
-    		
-    os.makedirs(current_install_path)
-
-    install_path, url, installed_files, dirfromgit = install_branch(config_dict)
-
-    start_path = current_install_path + '/shortcut.py'
-    url_scheme = shortcuts.pythonista_url(path=start_path,  action='run', args="", argv=[])
-    print(f"\nURL scheme: {url_scheme}")
+    install_path, config_dict, update_status =init_install_path(CONFIG_DICT['install_root_name'])
     
-    installed_dir = current_install_path + '/' + installed_files[0]
-    create_url_scheme_and_qr_code(installed_dir, url_scheme, 'shortcut.py')
-    shortcuts.open_url(url_scheme)
+    if update_status:
+        console.alert("MetreiOS Update Scheduled", "MetreiOS software will update the next time you open the app", "OK")
+    else:
+        current_install_path =  os.path.abspath(os.path.expanduser('~/Documents/' +     CONFIG_DICT['install_root_name'] + '/' +    config_dict['git_repo']))
+    
+        
+        os.makedirs(current_install_path)
+    
+        install_path, url, installed_files, dirfromgit =    install_branch(config_dict)
+    
+        start_path = current_install_path + '/shortcut.py'
+        url_scheme = shortcuts.pythonista_url(path=start_path,      action='run', args="", argv=[])
+        print(f"\nURL scheme: {url_scheme}")
+        
+        installed_dir = current_install_path + '/' +    installed_files[0]
+        create_url_scheme_and_qr_code(installed_dir, url_scheme,    'shortcut.py')
+        shortcuts.open_url(url_scheme)
  ###################################
 
 
