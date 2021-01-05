@@ -25,8 +25,8 @@ def init_install_path(install_dir_name):
     if os.path.exists(root_dir):
         with open(root_dir + '/metre_ios_install_config.json', 'w') as outfile:
                 json.dump(CONFIG_DICT, outfile)
-            config_dict = CONFIG_DICT
-            update = True
+        config_dict = CONFIG_DICT
+        update = True
         print('app directory exists')
     else:
         print('making app directory')
