@@ -1,5 +1,5 @@
 # Python imports
-import os, requests, shutil, zipfile, json, sys, tempfile, fnmatch
+import os, requests, shutil, zipfile, json, sys, tempfile, fnmatch, console
 from types import SimpleNamespace
 from pprint import pprint
 
