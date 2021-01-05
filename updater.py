@@ -36,7 +36,7 @@ def init_install_path(install_dir_name):
         config_dict = CONFIG_DICT
         update = False
         
-    return root_dir, config_dict, status
+    return root_dir, config_dict, update
 
 
 ##########################################################
@@ -101,7 +101,7 @@ def install_from_github(root_path, install_path, auth_token, url, params):
         return None
 
 def install_branch(params):
-    root_install_path, config_dict = init_install_path(params['install_root_name'])
+    root_install_path, config_dict, update_status = init_install_path(params['install_root_name'])
     url = make_git_url(params['git_usr'], params['git_repo'], params['git_branch'])
     install_path = root_install_path + '/' + params['git_repo']
     installed_files, dirfromgit = install_from_github(root_install_path, install_path, params['git_auth'], url, params)
