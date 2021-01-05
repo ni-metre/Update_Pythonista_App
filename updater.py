@@ -36,7 +36,7 @@ def init_install_path(install_dir_name):
         config_dict = CONFIG_DICT
         update = False
         
-    return root_dir, config_dict
+    return root_dir, config_dict, status
 
 
 ##########################################################
