@@ -157,7 +157,7 @@ def main():
     current_install_path = os.path.abspath(os.path.expanduser('~/Documents/' + CONFIG_DICT['install_root_name'] + '/' + config_dict['git_repo']))
     if os.path.exists(current_install_path):
         # Code to launch app
-        clear.console()
+        console.clear()
         start_path = current_install_path + '/' + config_dict['start_file']
         url_scheme = shortcuts.pythonista_url(path=start_path, action='run', args="", argv=[])
         shortcuts.open_url(url_scheme)
