@@ -1,5 +1,5 @@
 # Python imports
-import os, requests, shutil, zipfile, json, sys, tempfile, fnmatch
+import os, requests, shutil, zipfile, json, sys, tempfile, fnmatch, console
 from types import SimpleNamespace
 from pprint import pprint
 
@@ -144,19 +144,20 @@ def install_branch(params):
 def create_url_scheme_and_qr_code(installed_dir, url_scheme, start_file):
     url_file = start_file.split('.')[0] + '.url'
     open(installed_dir + url_file, "w").write(url_scheme)
-    print(f"\nURL Scheme saved as: {url_file}")
+    #print(f"\nURL Scheme saved as: {url_file}")
 
     img = qrcode.make(url_scheme)
     img.show()
     qrcode_file = 'qrcode' + '-' + start_file.split('.')[0] + '.jpg'
     img.save(installed_dir + qrcode_file)
-    print(f"\nQR Code saved as: {qrcode_file}")
+    #print(f"\nQR Code saved as: {qrcode_file}")
 
 def main():
     install_path, update_status, config_dict =init_install_path(CONFIG_DICT['install_root_name'])
     current_install_path = os.path.abspath(os.path.expanduser('~/Documents/' + CONFIG_DICT['install_root_name'] + '/' + config_dict['git_repo']))
     if os.path.exists(current_install_path):
         # Code to launch app
+        clear.console()
         start_path = current_install_path + '/' + config_dict['start_file']
         url_scheme = shortcuts.pythonista_url(path=start_path, action='run', args="", argv=[])
         shortcuts.open_url(url_scheme)
@@ -172,7 +173,7 @@ def main():
     if update_status:
         start_path = current_install_path + '/' +    config_dict['start_file']
         url_scheme = shortcuts.pythonista_url(path=start_path,  action='run', args="", argv=[])
-        print(f"\nURL scheme: {url_scheme}")
+        #print(f"\nURL scheme: {url_scheme}")
     
         installed_dir = current_install_path + '/' + installed_files[0]
         create_url_scheme_and_qr_code(installed_dir, url_scheme, config_dict['start_file'])
@@ -182,7 +183,7 @@ def main():
     else:
         start_path = current_install_path + '/shortcut.py'
         url_scheme = shortcuts.pythonista_url(path=start_path,  action='run', args="", argv=[])
-        print(f"\nURL scheme: {url_scheme}")
+        #print(f"\nURL scheme: {url_scheme}")
     
         installed_dir = current_install_path + '/' + installed_files[0]
         create_url_scheme_and_qr_code(installed_dir, url_scheme, 'shortcut.py')
