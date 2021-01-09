@@ -23,8 +23,17 @@ TEMPDIR = tempfile.mkdtemp()
 def init_install_path(install_dir_name):
     root_dir = os.path.abspath(os.path.expanduser('~/Documents/' + install_dir_name))
     if os.path.exists(root_dir):
+
+        with open(root_dir + 'metre_ios_install_config.json') as f:
+          sourcedict = json.load(f)
+       
+          
+        if sourcedict['git_repo'] == CONFIG_DICT['git_repo']:
+          uptodate = True
+        else:
+          uptodate = False
         with open(root_dir + '/metre_ios_install_config.json', 'w') as outfile:
-                json.dump(CONFIG_DICT, outfile)
+          json.dump(CONFIG_DICT, outfile)
         config_dict = CONFIG_DICT
         update = True
         print('app directory exists')
@@ -36,7 +45,7 @@ def init_install_path(install_dir_name):
         config_dict = CONFIG_DICT
         update = False
         
-    return root_dir, config_dict, update
+    return root_dir, config_dict, update, uptodate
 
 
 ##########################################################
@@ -101,7 +110,7 @@ def install_from_github(root_path, install_path, auth_token, url, params):
         return None
 
 def install_branch(params):
-    root_install_path, config_dict, update_status = init_install_path(params['install_root_name'])
+    root_install_path, config_dict, update_status, current_status = init_install_path(params['install_root_name'])
     url = make_git_url(params['git_usr'], params['git_repo'], params['git_branch'])
     install_path = root_install_path + '/' + params['git_repo']
     installed_files, dirfromgit = install_from_github(root_install_path, install_path, params['git_auth'], url, params)
@@ -122,10 +131,19 @@ def create_url_scheme_and_qr_code(installed_dir, url_scheme, start_file):
     print(f"\nQR Code saved as: {qrcode_file}")
 
 def main():
-    install_path, config_dict, update_status =init_install_path(CONFIG_DICT['install_root_name'])
+    install_path, config_dict, update_status, current_status =init_install_path(CONFIG_DICT['install_root_name'])
     
     if update_status:
-        console.alert("MetreiOS Update Scheduled", "MetreiOS software will update the next time you open the app", "OK")
+      
+        if current_status:
+          console.alert("Your software is up-to-date with the version associated with this QR code", "OK")
+          #Launch App
+          start_path = current_install_path + '/MainMetre.py'
+          url_scheme = shortcuts.pythonista_url(path=start_path,      action='run', args="", argv=[])
+          shortcuts.open_url(url_scheme)
+          
+        else:
+          console.alert("MetreiOS Update Scheduled", "MetreiOS software will update the next time you open the app", "OK")
     else:
         current_install_path =  os.path.abspath(os.path.expanduser('~/Documents/' +     CONFIG_DICT['install_root_name'] + '/' +    config_dict['git_repo']))
     
