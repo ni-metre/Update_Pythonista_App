@@ -44,6 +44,7 @@ def init_install_path(install_dir_name):
             json.dump(CONFIG_DICT, outfile)
         config_dict = CONFIG_DICT
         update = False
+        uptodate = False
         
     return root_dir, config_dict, update, uptodate
 
