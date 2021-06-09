@@ -1,3 +1,3 @@
 # Update_Pythonista_App
 
-Put latest version in shortcuts.py
+Put latest version in updater.py
