@@ -7,7 +7,7 @@ from pprint import pprint
 import shortcuts
 import qrcode
 import requests
-NEW_VERSION = 'MetreAppUI_v0.23'
+NEW_VERSION = 'MetreAppUI_v0.24'
 CONFIG_DICT = {'install_root_name': "MetreiOS",
                             'git_usr': "apimetre",
                             'git_repo': NEW_VERSION,
