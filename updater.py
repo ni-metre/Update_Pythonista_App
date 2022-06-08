@@ -79,36 +79,36 @@ def install_from_github(root_path, install_path, auth_token, url, params):
     headers = {"Authorization": token_pyld}
     dwnld_zipfile = '/'+ url.split('/')[-1]
     local_zipfile = install_path + dwnld_zipfile
-    try:
-        r = requests.get(url, stream=True, headers=headers)
-        r.raise_for_status()
-        with open(local_zipfile, 'wb') as f:
-            block_sz = 1024
-            for chunk in r.iter_content(block_sz):
-                f.write(chunk)
-        z = zipfile.ZipFile(local_zipfile)
-        z.extractall(TEMPDIR)
-        print('These are the files in the tempdir')
-        githubfolder = os.listdir(TEMPDIR)
-        #print(os.listdir(TEMPDIR))
-        print(githubfolder[0])
-        print('These are the folders in tempdir/githubfolder')
-        tempsource = TEMPDIR + '/' + githubfolder[0]
-        print("THIS is tempsource " + str(tempsource))
-        print("THIS is the destination " + str(install_path))
-        print(os.listdir(tempsource))
-        allFileList = os.listdir(tempsource)
-        for file in allFileList:
-          shutil.move(tempsource + '/' + file, install_path + '/' + file)
+    r = requests.get(url, stream=True, headers=headers)
+    r.raise_for_status()
+    with open(local_zipfile, 'wb') as f:
+        block_sz = 1024
+        for chunk in r.iter_content(block_sz):
+            f.write(chunk)
+    z = zipfile.ZipFile(local_zipfile)
+    z.extractall(TEMPDIR)
+    print('These are the files in the tempdir')
+    githubfolder = os.listdir(TEMPDIR)
+    #print(os.listdir(TEMPDIR))
+    print(githubfolder[0])
+    print('These are the folders in tempdir/githubfolder')
+    tempsource = TEMPDIR + '/' + githubfolder[0]
+    print("THIS is tempsource " + str(tempsource))
+    print("THIS is the destination " + str(install_path))
+    print(os.listdir(tempsource))
+    allFileList = os.listdir(tempsource)
+    for file in allFileList:
+      shutil.move(tempsource + '/' + file, install_path + '/' + file)
 
-        unzipped_dirname = z.namelist()[0]
-        os.remove(local_zipfile)
-        installedFileList = os.listdir(install_path)
-        print('finished listing')
-        return installedFileList, githubfolder[0]
-    except Exception as e:
-        print(f"Install Error: {e}")
-        return None
+    unzipped_dirname = z.namelist()[0]
+    os.remove(local_zipfile)
+    installedFileList = os.listdir(install_path)
+    print('finished listing')
+    return installedFileList, githubfolder[0]
+
+    #except Exception as e:
+    #    print(f"Install Error: {e}")
+    #    return None
 
 def install_branch(params):
     root_install_path, config_dict, update_status, current_status = init_install_path(params['install_root_name'])
@@ -167,4 +167,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
